@@ -34,8 +34,29 @@ class Perhitungan extends CI_Controller
 	{
 			$id = $this->session->userdata("user_id");
 			$kandungan = $this->input->post("kandungan");
-			$data = $this->model_hitung->fuzzy($kandungan);
-			$this->load->view('perhitungan/kandungan', ["hasil" => $data]);
+			$data = array(
+				"nama_pupuk" => $this->input->post('nama'),
+				"kandungan"=> $this->input->post('kandunganmu')
+			);
+	
+			
+				$fuzzy_topsis = $this->model_hitung->fuzzy($kandungan);
+				$fuzzymu = $this->model_hitung->fuzzy_input($kandungan,$data);
+			$this->load->view('perhitungan/kandungan', ["hasil"=>$fuzzy_topsis,'kandungan'=>$fuzzymu]);
+			//echo json_encode(["hasil"=>$fuzzy_topsis,'kandungan'=>$fuzzymu]);
+	}
+
+	public function tes()
+	{
+		$data = array(
+			"nama_pupuk" => $this->input->post('nama'),
+			"kandungan"=> $this->input->post('kandungan')
+		);
+
+		$kandungan = 1;
+
+		$respon = $this->model_hitung->fuzzy_input($kandungan,$data);
+		echo json_encode($respon);
 	}
 
 	function hitung()

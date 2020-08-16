@@ -73,15 +73,34 @@ $this->load->view('menu')
       </table>
     </div>
   </div>
-    <center>
+    <center><!--
       <form class="span4" action="<?= base_url("Perhitungan/fuzzy") ?>" method="POST">
             <input type="hidden" name="kandungan" value="<?= $kandungan ?>">
               <button type="submit" value="Kandungan" class="btn btn-info">Kandungan</button>
             </form>
+          -->
       <a href="<?= base_url('Perhitungan') ?>">
         <button type="submit" value="Kembali" class="btn btn-info">Kembali</button>
       </a>
   </center>
+  
+  <li class="clearfix">
+    <div class="widget-content nopadding">
+      <form class="form-horizontal" action="<?= base_url("Perhitungan/fuzzy") ?>" method="POST">
+      <input type="hidden" name="kandungan" value="<?= $kandungan ?>">
+        <label class="control-label">Jenis Pupuk :</label>
+          <div class="controls">
+            <input type="text" name="nama" id="nama" />
+          </div>
+        <label class="control-label">Kandungan :</label>
+          <div class="controls">
+            <input type="text" name="kandunganmu" id="kandunganmu" />
+          </div>
+    <center>
+      <a href="<?= base_url("Perhitungan/fuzzy") ?>">
+        <button type="submit" value="Hitung" class="btn btn-info">Hitung</button>
+      </a>
+    </center>
   </div>
 <!--Footer-part-->
 

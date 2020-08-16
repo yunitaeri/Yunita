@@ -74,6 +74,99 @@ class Model_Hitung extends CI_Model
 
     }
 
+    public function fuzzy_input($kandungan, $datapupuk)
+    {
+        $data = [];
+        switch ($kandungan) {
+            case 1:
+                $RENDAH = 0;
+                $NORMAL = 0;
+                $TINGGI = 0;
+                if ($datapupuk["kandungan"] <= 15) {
+                    $RENDAH = ($datapupuk["kandungan"] - 0) / (15 - 0);
+                } else if ($datapupuk["kandungan"] >= 15 && $datapupuk["kandungan"] <= 30) {
+                    $RENDAH = (30 - $datapupuk["kandungan"]) / (30 - 15);
+                    $NORMAL = ($datapupuk["kandungan"] - 15) / (30 - 15);
+                } else if ($datapupuk["kandungan"] >= 30 && $datapupuk["kandungan"] <= 45) {
+                    $NORMAL = (45 - $datapupuk["kandungan"]) / (45 - 30);
+                    $TINGGI = ($datapupuk["kandungan"] - 30) / (45 - 30);
+                } else if ($datapupuk["kandungan"] > 45) {
+                    $TINGGI = 1;
+                }
+
+                $data = array(
+                    "nama" => $datapupuk['nama_pupuk'],
+                    "rendah" => $RENDAH,
+                    "normal" => $NORMAL,
+                    "tinggi" => $TINGGI
+                );
+                break;
+
+            case 2:
+                $RENDAH = 0;
+                $NORMAL = 0;
+                $TINGGI = 0;
+
+                if ($datapupuk["kandungan"] <= 12) {
+                    $RENDAH = ($datapupuk["kandungan"] - 0) / (12 - 0);
+                } else if ($datapupuk["kandungan"] >= 12 && $datapupuk["kandungan"] <= 24) {
+                    $RENDAH = (24 - $datapupuk["kandungan"]) / (24 - 12);
+                    $NORMAL = ($datapupuk["kandungan"] - 12) / (24 - 12);
+                } else if ($datapupuk["kandungan"] >= 24 && $datapupuk["kandungan"] <= 36) {
+                    $NORMAL = (36 - $datapupuk["kandungan"]) / (36 - 24);
+                    $TINGGI = ($datapupuk["kandungan"] - 24) / (36 - 24);
+                } else {
+                    $TINGGI = 1;
+                }
+                
+                $data = array(
+                    "nama" => $datapupuk['nama_pupuk'],
+                    "rendah" => $RENDAH,
+                    "normal" => $NORMAL,
+                    "tinggi" => $TINGGI
+                );
+                break;
+
+            case 3:
+                $RENDAH = 0;
+                $NORMAL = 0;
+                $TINGGI = 0;
+
+                if ($datapupuk["kandungan"] <= 20) {
+                    $RENDAH = ($datapupuk["kandungan"] - 0) / (20 - 0);
+                } else if ($datapupuk["kandungan"] >= 20 && $datapupuk["kandungan"] <= 40) {
+                    $RENDAH = (40 - $datapupuk["kandungan"]) / (40 - 20);
+                    $NORMAL = ($datapupuk["kandungan"] - 20) / (40 - 20);
+                } else if ($datapupuk["kandungan"] >= 40 && $datapupuk["kandungan"] <= 60) {
+                    $NORMAL = (60 - $datapupuk["kandungan"]) / (60 - 40);
+                    $TINGGI = ($datapupuk["kandungan"] - 40) / (60 - 40);
+                } else {
+                    $TINGGI = 1;
+                }
+
+                $data = array(
+                    "nama" => $datapupuk['nama_pupuk'],
+                    "rendah" => $RENDAH,
+                    "normal" => $NORMAL,
+                    "tinggi" => $TINGGI
+                );
+                break;
+        }
+        $max = 0;
+        $tingkat = "";
+        foreach ($data as $key => $value) {
+            if ($max < $value) {
+                $max = $value;
+                $tingkat = $key;
+            }
+        }
+        
+        $data["tingkat"] = $tingkat;
+
+        return $data;
+        
+    }
+
     public function fuzzy($kandungan)
     {
       $data = [];

@@ -54,30 +54,32 @@ $this->load->view('menu')
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th> <h6>Id Acuan</h6> </th>
+                  <th> <h6>Jenis Pupuk</h6> </th>
+                  <th> <h6>Jenis Kandungan</h6></th>
                   <th> <h6>Umur</h6> </th>
                   <th> <h6>pH Tanah</h6> </th>
                   <th> <h6>Luas Tanam</h6> </th>
                   <th> <h6>Jarak Tanam</h6> </th>
                   <th> <h6>Tinggi Tanaman</h6> </th>
-                  <th> <h6>Aksi</h6> </th>
+                  <!--<th> <h6>Aksi</h6> </th>-->
                 </tr>
               </thead>
               <tbody>
                 <?php $no=1; foreach ($acuan as $value): ?>
                   <tr>
-                    <td><?php echo $value->id_acuan ?></td>
+                    <td><?php echo $value->jenis_pupuk ?></td>
+                    <td><?php echo $value->jenis_kandungan ?></td>
                     <td><?php echo $value->umur ?></td>
                     <td><?php echo $value->pH ?></td>
                     <td><?php echo $value->luas ?></td>
                     <td><?php echo $value->jarak ?></td>
                     <td><?php echo $value->tinggi ?></td>
-                    <td>
+                    <!--<td>
                       <div class="fr">
-                        <a href="<?php echo base_url('Data_acuan/edit/').$value->id_jenis ?>" class="btn btn-warning btn-mini">Edit</a>
-                        <a href="<?php echo base_url('Data_acuan/hapus/').$value->id_jenis ?>" class="btn btn-danger btn-mini">Delete</a>
+                        <a href="<?php echo base_url('Data_acuan/edit/').$value->id_acuan ?>" class="btn btn-warning btn-mini">Edit</a>
+                        <a href="<?php echo base_url('Data_acuan/hapus/').$value->id_acuan ?>" class="btn btn-danger btn-mini">Delete</a>
                       </div>
-                    </td>
+                    </td>-->
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -85,7 +87,7 @@ $this->load->view('menu')
           </div>
         </div>
 
-  <div> <a href="<?php echo base_url();?>Data_Acuan/input" class="btn btn-primary btn-mini">Tambahkan</a></div>
+  <!--<div> <a href="<?php echo base_url();?>Data_Acuan/input" class="btn btn-primary btn-mini">Tambahkan</a></div>-->
 <!--End-Chart-box-->
 
 

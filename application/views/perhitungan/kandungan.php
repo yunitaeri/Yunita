@@ -71,6 +71,27 @@ $this->load->view('menu')
             </table>
           </div>
         </div>
+        <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th rowspan="1"> <h6>Nama Pupuk</h6> </th>
+                  <th rowspan="1"> <h6>Rendah</h6> </th>
+                  <th rowspan="1"> <h6>Normal</h6> </th>
+                  <th rowspan="1"> <h6>Tinggi</h6> </th>
+                  <th rowspan="1"> <h6>Tingkat</h6> </th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td><?= $kandungan["nama"] ?></td>
+                    <td><?= $kandungan["rendah"]?></td>
+                    <td><?= $kandungan["normal"]?></td>
+                    <td><?= $kandungan["tinggi"]?></td>
+                    <td><?= $kandungan["tingkat"]?></td>
+                    </tr>
+              </tbody>
+            </table>
+            <a>     *).Jika terdapat nilai fuzzy yang sama antara dua tingkat, maka dapat digolongkan kedalam dua tingkat</a>
           <center>
             <a href="<?= base_url('Perhitungan') ?>">
               <button type="submit" value="Kembali" class="btn btn-info">Kembali</button>

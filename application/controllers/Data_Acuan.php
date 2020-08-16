@@ -26,6 +26,11 @@ class Data_Acuan extends CI_Controller {
 
 
 	}
+
+	public function test()
+	{
+		echo json_encode($this->model_data_acuan->get_semua_data()->result_array());
+	}
   public function input()
   {
     $this->load->view('Data_acuan/input');
